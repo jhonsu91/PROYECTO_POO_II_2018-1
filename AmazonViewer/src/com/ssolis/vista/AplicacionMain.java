@@ -6,7 +6,8 @@ package com.ssolis.vista;
  */
 public class AplicacionMain {
   public static void main(String[] args) {
-        
+        System.out.println("hola mundo");
+        System.out.println("Bienvenidos a POO 2");
         
     }
 }
