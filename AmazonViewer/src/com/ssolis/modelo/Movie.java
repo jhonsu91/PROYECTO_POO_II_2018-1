@@ -1,35 +1,28 @@
 package com.ssolis.modelo;
 
+import com.ssolis.interfaces.IVisualizable;
+import java.util.Date;
+
 /**
   * @Instituto Rumiñahui
  * @author SSolis
  */
-public class Movie {
-  /*int id,duration,timeViewed;
-  short year;
-  boolean viewed;
-  String title, genre,creator;
-*/
-    private int id;
-    private String title;
-    private String genero;
-    private String creador;
-    private int duration;  
-    private short year;  
-    private boolean viwear;
-    private int timeviwer;
+public class Movie extends Film implements IVisualizable{
+    
+  private int id;
+  private int timeViewed;
 
-    public Movie(int id, String title, String genero, String creador, int duration, short year, boolean viwear, int timeviwer) {
+  public Movie(){
+      
+  }
+
+    public Movie(int id, int timeViewed, String title, String genre, String creador, int duration, short year, boolean viwear) {
+        super(title, genre, creador, duration, year, viwear);
         this.id = id;
-        this.title = title;
-        this.genero = genero;
-        this.creador = creador;
-        this.duration = duration;
-        this.year = year;
-        this.viwear = viwear;
-        this.timeviwer = timeviwer;
+        this.timeViewed = timeViewed;
     }
-
+  
+    
     /**
      * @return the id
      */
@@ -37,109 +30,42 @@ public class Movie {
         return id;
     }
 
+  
+
     /**
-     * @param id the id to set
+     * @return the timeViewed
      */
-    public void setId(int id) {
-        this.id = id;
+    public int getTimeViewed() {
+        return timeViewed;
     }
 
     /**
-     * @return the title
+     * @param timeViewed the timeViewed to set
      */
-    public String getTitle() {
-        return title;
+    public void setTimeViewed(int timeViewed) {
+        this.timeViewed = timeViewed;
     }
 
-    /**
-     * @param title the title to set
-     */
-    public void setTitle(String title) {
-        this.title = title;
+    @Override
+    public Date starToSee(Date dateI) {
+    return dateI;
     }
 
-    /**
-     * @return the genero
-     */
-    public String getGenero() {
-        return genero;
+    @Override
+    public void stopToSee(Date dateI, Date dateF) {
+        if(dateF.getTime()>dateI.getTime()){
+            setTimeViewed((int)(dateF.getTime()-dateI.getTime()));
+        }else{
+            setTimeViewed(0);
+        }
     }
 
-    /**
-     * @param genero the genero to set
-     */
-    public void setGenero(String genero) {
-        this.genero = genero;
+    @Override
+    public String toString() {
+        return "\n::MOVIE::"
+                +""
     }
 
-    /**
-     * @return the creador
-     */
-    public String getCreador() {
-        return creador;
-    }
-
-    /**
-     * @param creador the creador to set
-     */
-    public void setCreador(String creador) {
-        this.creador = creador;
-    }
-
-    /**
-     * @return the duration
-     */
-    public int getDuration() {
-        return duration;
-    }
-
-    /**
-     * @param duration the duration to set
-     */
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
-
-    /**
-     * @return the year
-     */
-    public short getYear() {
-        return year;
-    }
-
-    /**
-     * @param year the year to set
-     */
-    public void setYear(short year) {
-        this.year = year;
-    }
-
-    /**
-     * @return the viwear
-     */
-    public boolean isViwear() {
-        return viwear;
-    }
-
-    /**
-     * @param viwear the viwear to set
-     */
-    public void setViwear(boolean viwear) {
-        this.viwear = viwear;
-    }
-
-    /**
-     * @return the timeviwer
-     */
-    public int getTimeviwer() {
-        return timeviwer;
-    }
-
-    /**
-     * @param timeviwer the timeviwer to set
-     */
-    public void setTimeviwer(int timeviwer) {
-        this.timeviwer = timeviwer;
-    }
     
-}
+    
+    } 
