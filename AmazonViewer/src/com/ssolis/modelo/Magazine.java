@@ -6,4 +6,8 @@ package com.ssolis.modelo;
  */
 public class Magazine {
 
+    int id,edition,editionDate;
+    short year;
+    boolean viewed;
+    String title;
 }
